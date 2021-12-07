@@ -1,0 +1,85 @@
+/* some colors you may find useful:
+  #115ff4
+  #060ce9
+  #28a200
+  #8d2ab5
+  #74119c
+*/
+
+body{
+  font-family: Arial, Helvetica, sans-serif;
+
+}
+
+h1 {
+  text-align: center;
+  font-size: 50px;
+  animation: fun 2s linear infinite;
+  color: #FFB7B2;
+}
+
+@keyframes fun {
+  0%   {color: #FFB7B2;}
+  20%  {color: #FFDAC1;}
+  40%  {color: #E2F0CB;}
+  60% {color: #B5EAD7;}
+  80% {color: #C7CEEA}
+  100% {color: #8ca0f0}
+}
+
+
+#game-board {
+  width: 100%;
+  border-collapse: collapse;
+  text-align: center;
+
+}
+
+#game-board td:nth-child(2){
+  background-color: #FFB7B2;
+}
+#game-board td:nth-child(3){
+  background-color: #FFDAC1;
+}
+#game-board td:nth-child(4){
+  background-color: #E2F0CB;
+}
+#game-board td:nth-child(5){
+  background-color: #B5EAD7;
+}
+#game-board td:nth-child(6){
+  background-color: #C7CEEA;
+}
+
+
+th {
+  background-color: #000000;
+  color: white;
+  text-transform: uppercase;
+  letter-spacing: 2%;
+  /* border: 2px solid black; */
+  padding: 10px;
+  width: 11%;
+  height: 40px;
+
+}
+
+td {
+  border: 1.5px solid black;
+  padding: 0.5rem;
+  height:90px;
+}
+
+.game-button {
+  text-align: center;
+  padding: 0.5rem;
+
+}
+
+
+/* table {
+  width: 100%;
+  border: 1px solid black;
+  text-align: center;
+
+} */
