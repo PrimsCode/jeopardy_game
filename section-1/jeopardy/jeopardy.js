@@ -3,10 +3,6 @@ let resInfo = [];
 const WIDTH = 6;
 const HEIGHT = 5;
 
-/** Get NUM_CATEGORIES random category from API.
- * Returns array of category ids
- */
-
 function getCategoryIds() {
     let catIds = [];    
     while(catIds.length < 6){
@@ -15,16 +11,6 @@ function getCategoryIds() {
     }
     return catIds;
 }
-
-/** Return object with data about a category: *
- *  Returns { title: "Math", clues: clue-array } *
- * Where clue-array is:
- *   [
- *      {question: "Hamlet Author", answer: "Shakespeare", showing: null},
- *      {question: "Bell Jar Author", answer: "Plath", showing: null},
- *      ...
- *   ]
- */
 
 function getCategory(catId) {
     
@@ -53,17 +39,7 @@ function getCategory(catId) {
     categories.push(catData);  
 }
 
-/** Fill the HTML table#jeopardy with the categories & cells for 
- * questions.
- *
- * - The <thead> should be filled w/a <tr>, and a <td> for each 
- * category
- * - The <tbody> should be filled w/NUM_QUESTIONS_PER_CAT <tr>s,
- *   each with a question for each category in a <td>
- *   (initally, just show a "?" where the question/answer would go.)
- */
-
-// async 
+ 
 async function fillTable() {
       
     let gameBoard = document.createElement('table');
@@ -115,20 +91,11 @@ function handleClick(evt) {
     $(`#${y}-${x}`).html(text);
 }
 
-// /** Wipe the current Jeopardy board, show the loading spinner,
-//  * and update the button used to fetch data.
-//  */
-
-// function showLoadingView() {
-// }
-
-// /** Remove the loading spinner and update the button used to fetch data. */
-
-// function hideLoadingView() {
-// }
-
-
 async function setupAndStart() {
+    $(".game").empty();
+    categories = [];
+    resInfo = [];
+
     let ids = getCategoryIds(); 
     for (let i = 0; i < ids.length ; i++){
         let id = ids[i];
@@ -139,34 +106,10 @@ async function setupAndStart() {
     for (let catId of ids){
         getCategory(catId);
     }
-
-    console.log(categories);
-    console.log(categories[1].clues_count);
-    console.log(categories[1].clues);
     
     fillTable();
     $("table").on("click", "td", handleClick);
 }
 
 
-$("#start").on("click", setupAndStart);
-
-$("#reset").on("click", function(){
-    $(".game").empty();
-    setupAndStart();
-})
-
-
-
-// setupAndStart();
-/** On click of start / restart button, set up game. */
-
-// TODO
-
-// $(async function (){
-//     setupAndStart();
-//     $("table").on("click", "td", handleClick);
-// });
-/** On page load, add event handler for clicking clues */
-
-// TODO
+$("button").on("click", setupAndStart);
